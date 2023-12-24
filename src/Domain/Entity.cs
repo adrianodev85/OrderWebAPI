@@ -1,6 +1,8 @@
-﻿namespace OrderWebAPI.Domain;
+﻿using Flunt.Notifications;
 
-public abstract class Entity
+namespace OrderWebAPI.Domain;
+
+public abstract class Entity : Notifiable<Notification>
 {
     public Entity()
     {
@@ -13,5 +15,5 @@ public abstract class Entity
     public DateTime? CreatedOn { get; set; }
     public string? EditedBy { get; set; }
     public DateTime? EditedOn { get; set; }
-    public bool Active { get; set; } = true;
+    public bool Active { get; set; }
 }
