@@ -15,9 +15,7 @@ public class CategoryPost
 
         if(!category.IsValid)
         {
-            var errors = category.Notifications.GroupBy(e => e.Key)
-                .ToDictionary(e => e.Key, e => e.Select(x => x.Message).ToArray());
-            return Results.ValidationProblem(errors);
+            return Results.ValidationProblem(category.Notifications.ConvertToProblemaDetails());
         }
 
         context.Categories.Add(category);
